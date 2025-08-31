@@ -1,0 +1,19 @@
+const mockUserMethods = {
+  findUnique: jest.fn(),
+  create: jest.fn(),
+  update: jest.fn(),
+  delete: jest.fn(),
+  findMany: jest.fn(),
+};
+
+const mockPrismaClient = jest.fn().mockImplementation(() => ({
+  user: mockUserMethods,
+  $disconnect: jest.fn(),
+}));
+
+const PrismaClient = mockPrismaClient;
+
+module.exports = {
+  PrismaClient,
+  mockUserMethods,
+};
